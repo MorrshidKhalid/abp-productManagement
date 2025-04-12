@@ -11,7 +11,8 @@ namespace ProductManagement.Samples;
  * (like IIdentityUserAppService here).
  * Only test your own application services.
  */
-public abstract class SampleAppServiceTests<TStartupModule> : ProductManagementApplicationTestBase<TStartupModule>
+public abstract class SampleAppServiceTests<TStartupModule> : 
+    ProductManagementApplicationTestBase<TStartupModule>
     where TStartupModule : IAbpModule
 {
     private readonly IIdentityUserAppService _userAppService;
