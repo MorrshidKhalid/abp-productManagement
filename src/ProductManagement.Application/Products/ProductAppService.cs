@@ -14,20 +14,17 @@ namespace ProductManagement.Products
     {
         private readonly IRepository<Product, Guid> _productRepository;
         private readonly IRepository<Category, Guid> _categoryRepository;
-
         public ProductAppService(IRepository<Product, Guid> productRepository, IRepository<Category, Guid> categoryRepository)
         {
             _productRepository = productRepository;
             _categoryRepository = categoryRepository;
         }
-
         public async Task CreateAsync(CreateUpdateProductDto input)
         {
             await _productRepository.InsertAsync(
                 ObjectMapper.Map<CreateUpdateProductDto, Product>(input)
                 );
         }
-
         public async Task<ListResultDto<CategoryLookupDto>> GetCategoriesAsync()
         {
             var categories = await _categoryRepository.GetListAsync();
@@ -36,7 +33,14 @@ namespace ProductManagement.Products
                 ObjectMapper.Map
                 <List<Category>, List<CategoryLookupDto>>(categories));
         }
-
+        public async Task<ProductDto> GetAsync(Guid id)
+        => ObjectMapper.Map<Product, ProductDto>(await _productRepository.GetAsync(id));
+        public async Task UpdateAsync(Guid id, CreateUpdateProductDto input)
+        {
+            var product = await _productRepository.GetAsync(id);
+             ObjectMapper.Map(input, product);
+        }
+        public async Task DeleteAsync(Guid id) => await _productRepository.DeleteAsync(id);
         public async Task<PagedResultDto<ProductDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             // WithDetailsAsync is similar to incloud.
@@ -54,6 +58,5 @@ namespace ProductManagement.Products
             return new PagedResultDto<ProductDto>(
                 count, ObjectMapper.Map<List<Product>, List<ProductDto>>(products));
         }
-
     }
 }

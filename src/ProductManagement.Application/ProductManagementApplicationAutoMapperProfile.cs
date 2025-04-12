@@ -11,6 +11,5 @@ public class ProductManagementApplicationAutoMapperProfile : Profile
         CreateMap<Product, ProductDto>();
         CreateMap<CreateUpdateProductDto, Product>();
         CreateMap<Category, CategoryLookupDto>();
-        //CreateMap<CreateEditProductViewModel, CreateUpdateProductDto>();
     }
 }
