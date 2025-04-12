@@ -1,0 +1,20 @@
+{
+  "Culture": "en",
+  "Texts": {
+    "AppName": "ProductManagement",
+    "Menu:Home": "Home",
+    "Menu:ProductManagement": "Product Management",
+    "Menu:Products": "Product",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information visit",
+    "Welcome": "Welcome",
+    "Enum:stockState.0": "Pre-order",
+    "Enum:stockState.1": "In-stock",
+    "Enum:stockState.2": "Not-available",
+    "Enum:stockState.3": "Stopped",
+    "CreationTime": "Creation-time",
+    "NewProduct": "New Product",
+    "Category": "Category",
+    "IsFreeCargo": "Free Cargo",
+    "ReleaseDate": "Release Date"
+  }
+}
